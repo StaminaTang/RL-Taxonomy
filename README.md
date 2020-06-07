@@ -438,16 +438,30 @@ Never Give Up (NGU). (from the abstract) We propose a reinforcement learning age
 (Path: [Reinforcement Learning](#ReinforcementLearning) --> [Model Free](#ModelFree) --> [Policy Gradient/Actor-Critic](#PolicyGradientActorCritic))
 ![avatar](Xnip2020-06-07_11-31-23.png)
 The algorithm works directly to optimize the policy, with or without value function. If the value function is learned in addition to the policy, we would get Actor-Critic algorithm. Most policy gradient algorithms are Actor-Critic. The *Critic* updates value function parameters *w* and depending on the algorithm it could be action-value ***Q(a|s;w)*** or state-value ***V(s;w)***. The *Actor* updates policy parameters θ, in the direction suggested by the critic, ***π(a|s;θ)***. [from [Lilian Weng' blog](https://lilianweng.github.io/lil-log/2018/02/19/a-long-peek-into-reinforcement-learning.html)]
+problems:
+1. sample efficiency X
+2. unstability(no iid)
+
 
 - Useful links:
   - [Policy Gradient Algorithms](https://lilianweng.github.io/lil-log/2018/04/08/policy-gradient-algorithms.html)
   - [RL — Policy Gradient Explained](https://medium.com/@jonathan_hui/rl-policy-gradients-explained-9b13b688b146)
   - [Going Deeper Into Reinforcement Learning: Fundamentals of Policy Gradients](https://danieltakeshi.github.io/2017/03/28/going-deeper-into-reinforcement-learning-fundamentals-of-policy-gradients/)
   - [An introduction to Policy Gradients with Cartpole and Doom](https://www.freecodecamp.org/news/an-introduction-to-policy-gradients-with-cartpole-and-doom-495b5ef2207f/)
+  
+  
+  <a name ="PolicyGradientActorCritic"></a>
+#####<a name="Natural Policy Gradient"></a>NATURAL POLICY GRADIENT
+(Path: [Reinforcement Learning](#ReinforcementLearning) --> [Model Free](#ModelFree) --> [Policy Gradient/Actor-Critic](#PolicyGradientActorCritic) --> [Natural Policy Gradient](#Natural Policy Gradient))
+  ![avatar]natural policy gradient.png
+  
+  
 
  <a name="PolicyGradientActorCritic"></a>
 ##### <a name="REINFORCE"></a>REINFORCE
 (Path: [Reinforcement Learning](#ReinforcementLearning) --> [Model Free](#ModelFree) --> [Policy Gradient/Actor-Critic](#PolicyGradientActorCritic) --> [REINFORCE](#REINFORCE))
+![avatar]Xnip2020-06-07_14-18-21.png
+![avatar]Xnip2020-06-07_11-42-58.pngio0
 
 REINFORCE (Monte-Carlo policy gradient) is a pure policy gradient algorithm that works without a value function. The agent collects a trajectory of one episode using its current policy, and uses the returns to update the policy parameter
 
@@ -511,6 +525,8 @@ Deep Deterministic Policy Gradient (DDPG).
 
 ##### <a name="TRPO"></a>TRPO
 (Path: [Reinforcement Learning](#ReinforcementLearning) --> [Model Free](#ModelFree) --> [Policy Gradient/Actor-Critic](#PolicyGradientActorCritic) --> [TRPO](#TRPO))
+2. unstability, 二阶优化办法
+3. off policy， 达成办法：importance sampling
 
 Trust Region Policy Optimization (TRPO) improves training stability by enforcing a KL divergence constraint to avoid parameter updates that change the policy too much at one step.
 
@@ -984,7 +1000,7 @@ AlphaZero generalises tabula rasa reinforcement learning from games of self-play
 - Related to prior idea:
   - [Model Based](#ModelBased)
 
-#### <a name="METRPO"></a>ME-TRPO
+#### <a name="ME"></a>ME-TRPO
 (Path: [Reinforcement Learning](#ReinforcementLearning) --> [Model Based](#ModelBased) --> [ME-TRPO](#METRPO))
 
 (from the abstract) Model-free reinforcement learning (RL) methods are succeeding in a growing number of tasks, aided by recent advances in deep learning. However, they tend to suffer from high sample complexity, which hinders their use in real-world domains. Alternatively, model-based reinforcement learning promises to reduce sample complexity, but tends to require careful tuning and to date have succeeded mainly in restrictive domains where simple models are sufficient for learning. In this paper, we analyze the behavior of vanilla model-based reinforcement learning methods when deep neural networks are used to learn both the model and the policy, and show that the learned policy tends to exploit regions where insufficient data is available for the model to be learned, causing instability in training. To overcome this issue, we propose to use an ensemble of models to maintain the model uncertainty and regularize the learning process. We further show that the use of likelihood ratio derivatives yields much more stable learning than backpropagation through time. Altogether, our approach Model-Ensemble Trust-Region Policy Optimization (ME-TRPO) significantly reduces the sample complexity compared to model-free deep RL methods on challenging continuous control benchmark tasks.
