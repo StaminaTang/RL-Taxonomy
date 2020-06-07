@@ -436,7 +436,7 @@ Never Give Up (NGU). (from the abstract) We propose a reinforcement learning age
 
 #### <a name="PolicyGradientActorCritic"></a>Policy Gradient/Actor-Critic
 (Path: [Reinforcement Learning](#ReinforcementLearning) --> [Model Free](#ModelFree) --> [Policy Gradient/Actor-Critic](#PolicyGradientActorCritic))
-
+![avatar](Xnip2020-06-07_11-31-23.png)
 The algorithm works directly to optimize the policy, with or without value function. If the value function is learned in addition to the policy, we would get Actor-Critic algorithm. Most policy gradient algorithms are Actor-Critic. The *Critic* updates value function parameters *w* and depending on the algorithm it could be action-value ***Q(a|s;w)*** or state-value ***V(s;w)***. The *Actor* updates policy parameters θ, in the direction suggested by the critic, ***π(a|s;θ)***. [from [Lilian Weng' blog](https://lilianweng.github.io/lil-log/2018/02/19/a-long-peek-into-reinforcement-learning.html)]
 
 - Useful links:
